@@ -21,15 +21,19 @@ def price_notification():
             bh.send_message(output)
     print("Sending telegram updates complete!")
 
+def schedule_next_day():
     # Scheduling the next call for the methods.
-    current_date = datetime.datetime.now().strftime("%Y,%m,%d,%H,%M").split(',')
-    next_date = datetime.datetime(int(current_date[0]), int(current_date[1]), int(current_date[2]), int(current_date[3]), int(current_date[4]))
-    next_date += datetime.timedelta(minutes=1)
+    current_date = datetime.datetime.now().strftime("%Y,%m,%d").split(',')
+    next_date = datetime.datetime(int(current_date[0]), int(current_date[1]), int(current_date[2]))
+    next_date += datetime.timedelta(days=1)
+    #current_date = datetime.datetime.now().strftime("%Y,%m,%d,%H,%M").split(',')
+    #next_date = datetime.datetime(int(current_date[0]), int(current_date[1]), int(current_date[2]), int(current_date[3]), int(current_date[4]))
+    #next_date += datetime.timedelta(minutes=1)
     next_timestamp = next_date.timestamp()
 
     s.enterabs(next_timestamp, 1, price_notification)
     s.run()
 
-
 if __name__ == "__main__":
     price_notification()
+    schedule_next_day()
