@@ -16,10 +16,10 @@ class PlotUtils(object):
         '''
         Constructor
         '''
-        
+
     @staticmethod
-    def plotCoinTrend(market_info, logo, coin):   
-        fig, (ax1, ax2) = plt.subplots(2, 1, gridspec_kw={'height_ratios':[5, 1]}, figsize=(10, 10))   
+    def plotCoinTrend(market_info, logo, coin):
+        fig, (ax1, ax2) = plt.subplots(2, 1, gridspec_kw={'height_ratios':[5, 1]}, figsize=(10, 10))
         ax1.set_ylabel('Closing Price ($)', fontsize=12)
         ax2.set_ylabel('Volume ($ '+coin+')', fontsize=12)
         ax2.set_yticks([int('%d000000000' % i) for i in range(10)])
@@ -34,7 +34,7 @@ class PlotUtils(object):
         fig.figimage(logo, 100, 120, zorder=3, alpha=.5)
         plt.show()
         fig.savefig("../Output/"+coin+"Trend.png")
-    
+
     @staticmethod
     def plotCoinTrainingTest(market_info, split_date, coin_im, target, coin):
         fig, ax1 = plt.subplots(1, 1, figsize=(10, 10))
@@ -50,4 +50,4 @@ class PlotUtils(object):
         fig.figimage(coin_im.resize((int(coin_im.size[0] * 0.65), int(coin_im.size[1] * 0.65)), Image.ANTIALIAS),
                      350, 40, zorder=3, alpha=.5)
         plt.show()
-        fig.savefig("../Output/" + coin + "CoinTrainTest.png")    
+        fig.savefig("../Output/" + coin + "CoinTrainTest.png")

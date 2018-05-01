@@ -84,5 +84,5 @@ class ModelUtils(object):
         model.compile(loss=loss, optimizer=optimizer, metrics=[metrics.mse, metrics.mae, ModelUtils.r2_keras])
         # Summarize model
         print(model.summary())
-        
+
         return model
