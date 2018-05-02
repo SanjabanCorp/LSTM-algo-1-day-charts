@@ -1,5 +1,5 @@
 (Completed) Complete automation of daily prices notifications.
-Daily retrain the models for BTC and ETH.
+(Completed) Daily retrain the models for BTC and ETH.
 Change the Telegram notification message.
 Integrate more data sources for different time periods training.
 Enable model training through telegram bot.(User can send commands to get a new model trained and price being predicted.)

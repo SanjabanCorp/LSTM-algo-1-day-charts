@@ -107,7 +107,7 @@ def train_model(currency, from_date, to_date, model_path):
     else:
         ax1.set_ylabel('Model Loss', fontsize=12)
     ax1.set_xlabel('# Epochs', fontsize=12)
-    plt.show()
+    #plt.show()
     figErr.savefig("output/%s_error.png" % currency)
 
     #####################################
@@ -130,7 +130,7 @@ def train_model(currency, from_date, to_date, model_path):
     ax1.set_title('Test Set: Single Timepoint Prediction', fontsize=13)
     ax1.set_ylabel('Ethereum Price ($)', fontsize=12)
     ax1.legend(bbox_to_anchor=(0.1, 1), loc=2, borderaxespad=0., prop={'size': 14})
-    plt.show()
+    #plt.show()
     fig.savefig("output/%s_performanceTraining.png" % currency)
 
 
