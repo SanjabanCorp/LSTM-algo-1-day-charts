@@ -2,7 +2,7 @@
 
 (Completed) Daily retrain the models for BTC and ETH.
 
-Change the Telegram notification message.
+(Completed) Change the Telegram notification message.
   - Today’s predicted price is 9530, up about x percent from yesterday’s price of 9240
 
 Integrate more data sources for different time periods training.
