@@ -37,7 +37,7 @@ def price_notification():
     print("Sending telegram updates complete!")
 
 def day_job_runner():
-    from_date = '20170101'
+    from_date = (datetime.datetime.utcnow() - datetime.timedelta(days=365)).strftime("%Y%m%d")#'20170101'
     to_date = (datetime.datetime.utcnow() - datetime.timedelta(days=1)).strftime("%Y%m%d")
 
     for currency in ['bitcoin', 'ethereum']:

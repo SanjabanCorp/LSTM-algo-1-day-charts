@@ -33,7 +33,7 @@ def train_model(currency, from_date, to_date, model_path):
     # Splitting the data into 65-35 ratio. 65% point will be the split date.
     fd = datetime.datetime(int(from_date[0:4]), int(from_date[4:6]), int(from_date[6:]))
     td = datetime.datetime(int(to_date[0:4]), int(to_date[4:6]), int(to_date[6:]))
-    delta = 0.65 * (td - fd)
+    delta = 0.7 * (td - fd)
     split_date = fd + datetime.timedelta(days = int(str(delta).split()[0]))
 
     # Our LSTM model will use previous data to predict the next day's closing price of eth.
