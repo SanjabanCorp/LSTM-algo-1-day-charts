@@ -32,7 +32,8 @@ def price_notification():
             #output = "The predicted price for %s on %s is: %s" % (currency.upper(), (datetime.datetime.now() - datetime.timedelta(days=past_days-1)).strftime("%d %b, %Y"), prediction)
             seperator = "=" * (len((datetime.datetime.now() - datetime.timedelta(days=past_days-1)).strftime("%d %b, %Y")) + len(currency))
             output = "%s - %s\n%s\nPredicted Price = %s,\nA Change of %s %% from yesterday’s price of %s" % (currency.upper(), (datetime.datetime.now() - datetime.timedelta(days=past_days-1)).strftime("%d %b, %Y"), seperator, prediction, percent_change, prev_price)
-            #output = "%s - %s\n%s\nPredicted Price = %s,\nChange of %s  from yesterday’s price of %s" % (currency.upper(), (datetime.datetime.now() - datetime.timedelta(days=past_days-1)).strftime("%d %b, %Y"), seperator, prediction, percent_change, prev_price)
+            #output = "%s - %s\n%s\nPredicted Price = %s,\nA Change of %s %% from yesterday’s price of %s" % (currency.upper(), end_date, seperator, prediction, percent_change, prev_price)
+
             bh.send_message(output)
     print("Sending telegram updates complete!")
 
