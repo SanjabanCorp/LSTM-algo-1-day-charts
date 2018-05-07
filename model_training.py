@@ -98,40 +98,40 @@ def train_model(currency, from_date, to_date, model_path):
     print('\nR^2: {}'.format(scores[3]))
 
     # Plot Error
-    figErr, ax1 = plt.subplots(1, 1)
-    ax1.plot(eth_history.epoch, eth_history.history['loss'])
-    ax1.set_title('Training Error')
-    if eth_model.loss == 'mae':
-        ax1.set_ylabel('Mean Absolute Error (MAE)', fontsize=12)
-    # just in case you decided to change the model loss calculation
-    else:
-        ax1.set_ylabel('Model Loss', fontsize=12)
-    ax1.set_xlabel('# Epochs', fontsize=12)
-    #plt.show()
-    figErr.savefig("output/%s_error.png" % currency)
+    # figErr, ax1 = plt.subplots(1, 1)
+    # ax1.plot(eth_history.epoch, eth_history.history['loss'])
+    # ax1.set_title('Training Error')
+    # if eth_model.loss == 'mae':
+    #     ax1.set_ylabel('Mean Absolute Error (MAE)', fontsize=12)
+    # # just in case you decided to change the model loss calculation
+    # else:
+    #     ax1.set_ylabel('Model Loss', fontsize=12)
+    # ax1.set_xlabel('# Epochs', fontsize=12)
+    # #plt.show()
+    # figErr.savefig("output/%s_error.png" % currency)
 
     #####################################
     # EVALUATE ON TEST DATA
     #####################################
 
     # Plot Performance
-    fig, ax1 = plt.subplots(1, 1, figsize=(10, 10))
-    ax1.set_xticks([datetime.date(2017, i + 1, 1) for i in range(12)])
-    ax1.set_xticklabels([datetime.date(2017, i + 1, 1).strftime('%b %d %Y')  for i in range(12)])
-    ax1.plot(model_data[model_data['Date'] >= split_date]['Date'][window_len:].astype(datetime.datetime),
-             test_set[currency + '_Close'][window_len:], label='Actual')
-    ax1.plot(model_data[model_data['Date'] >= split_date]['Date'][window_len:].astype(datetime.datetime),
-             ((np.transpose(eth_model.predict(LSTM_test_inputs)) + 1) * test_set[currency + '_Close'].values[:-window_len])[0],
-             label='Predicted')
-    ax1.annotate('MAE: %.4f' % np.mean(np.abs((np.transpose(eth_model.predict(LSTM_test_inputs)) + 1) - \
-                (test_set[currency + '_Close'].values[window_len:]) / (test_set[currency + '_Close'].values[:-window_len]))),
-                 xy=(0.75, 0.9), xycoords='axes fraction',
-                xytext=(0.75, 0.9), textcoords='axes fraction')
-    ax1.set_title('Test Set: Single Timepoint Prediction', fontsize=13)
-    ax1.set_ylabel('Ethereum Price ($)', fontsize=12)
-    ax1.legend(bbox_to_anchor=(0.1, 1), loc=2, borderaxespad=0., prop={'size': 14})
-    #plt.show()
-    fig.savefig("output/%s_performanceTraining.png" % currency)
+    # fig, ax1 = plt.subplots(1, 1, figsize=(10, 10))
+    # ax1.set_xticks([datetime.date(2017, i + 1, 1) for i in range(12)])
+    # ax1.set_xticklabels([datetime.date(2017, i + 1, 1).strftime('%b %d %Y')  for i in range(12)])
+    # ax1.plot(model_data[model_data['Date'] >= split_date]['Date'][window_len:].astype(datetime.datetime),
+    #          test_set[currency + '_Close'][window_len:], label='Actual')
+    # ax1.plot(model_data[model_data['Date'] >= split_date]['Date'][window_len:].astype(datetime.datetime),
+    #          ((np.transpose(eth_model.predict(LSTM_test_inputs)) + 1) * test_set[currency + '_Close'].values[:-window_len])[0],
+    #          label='Predicted')
+    # ax1.annotate('MAE: %.4f' % np.mean(np.abs((np.transpose(eth_model.predict(LSTM_test_inputs)) + 1) - \
+    #             (test_set[currency + '_Close'].values[window_len:]) / (test_set[currency + '_Close'].values[:-window_len]))),
+    #              xy=(0.75, 0.9), xycoords='axes fraction',
+    #             xytext=(0.75, 0.9), textcoords='axes fraction')
+    # ax1.set_title('Test Set: Single Timepoint Prediction', fontsize=13)
+    # ax1.set_ylabel('Ethereum Price ($)', fontsize=12)
+    # ax1.legend(bbox_to_anchor=(0.1, 1), loc=2, borderaxespad=0., prop={'size': 14})
+    # #plt.show()
+    # fig.savefig("output/%s_performanceTraining.png" % currency)
 
 
     return

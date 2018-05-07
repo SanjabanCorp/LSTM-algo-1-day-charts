@@ -5,6 +5,8 @@
 (Completed) Change the Telegram notification message.
   - Today’s predicted price is 9530, up about x percent from yesterday’s price of 9240
 
+Set-up the project on Mash's first VM
+
 Integrate more data sources for different time periods training.
 
 Enable model training through telegram bot.(User can send commands to get a new model trained and price being predicted.)
