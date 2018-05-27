@@ -28,10 +28,20 @@ def predict_price(currency, start_date, end_date):
     # convert the date string to the correct date format
     market_info = market_info.assign(Date=pd.to_datetime(market_info['Date']))
 
+    temp_list = []
+    for i in range(0, len(market_info.columns)):
+        if market_info.columns[i] == "Close**":
+            temp_list.append("Close")
+        elif market_info.columns[i] == "Open*":
+            temp_list.append("Open")
+        else:
+            temp_list.append(market_info.columns[i])
+
+    market_info.columns = temp_list
     # Feature Eng
-
+    # print(market_info.columns)
     market_info.columns = [market_info.columns[0]] + [currency + '_' + i for i in market_info.columns[1:]]
-
+    # print(market_info.columns)
     kwargs = { currency + '_day_diff': lambda x: (x[currency + '_Close'] - x[currency + '_Open']) / x[currency + '_Open']}
     market_info = market_info.assign(**kwargs)
 

@@ -13,7 +13,7 @@ s = sched.scheduler(time.time, time.sleep)
 
 def get_prev_day_price(currency):
     market_info = pd.read_html("https://coinmarketcap.com/currencies/%s/historical-data/?start=%s&end=%s" % (currency, (datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%Y%m%d"), datetime.datetime.now().strftime("%Y%m%d")))[0]
-    return market_info['Close'][0]
+    return market_info['Close**'][0]
 
 def price_notification():
     past_days = 1

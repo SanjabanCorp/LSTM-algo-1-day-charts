@@ -46,7 +46,16 @@ def train_model(currency, from_date, to_date, model_path):
 
     # Get Market info
     market_info = pd.read_html("https://coinmarketcap.com/currencies/%s/historical-data/?start=%s&end=%s" % (currency, from_date, to_date))[0]
+    temp_list = []
+    for i in range(0, len(market_info.columns)):
+        if market_info.columns[i] == "Close**":
+            temp_list.append("Close")
+        elif market_info.columns[i] == "Open*":
+            temp_list.append("Open")
+        else:
+            temp_list.append(market_info.columns[i])
 
+    market_info.columns = temp_list
     # convert the date string to the correct date format
     market_info = market_info.assign(Date=pd.to_datetime(market_info['Date']))
     market_info.columns = [market_info.columns[0]] + [currency + '_' + i for i in market_info.columns[1:]]
